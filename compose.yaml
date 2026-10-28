@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      APP_DEBUG: "0"
+      APP_LOCAL_COACH: "0"
+      APP_OPEN_PORTAL: ${APP_OPEN_PORTAL:-1}
+      APP_TRUST_PROXY: "1"
+      APP_SECURE: "1"
+      APP_SECRET_KEY: ${APP_SECRET_KEY:?운영용 APP_SECRET_KEY를 .env에 설정하세요}
+      APP_ALLOWED_HOSTS: ${APP_ALLOWED_HOSTS:?운영 도메인을 .env에 설정하세요}
+      APP_CSRF_TRUSTED_ORIGINS: ${APP_CSRF_TRUSTED_ORIGINS:?https://운영도메인을 .env에 설정하세요}
+      APP_PUBLIC_URL: ${APP_PUBLIC_URL:?실제 HTTPS 공개 주소를 .env에 설정하세요}
+      APP_DATA_DIR: /data
+    volumes:
+      - lesson_data:/data
+volumes:
+  lesson_data:

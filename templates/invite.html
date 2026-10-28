@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block title %}선수 계정 활성화{% endblock %}
+{% block content %}<section class="panel activation-card"><span class="eyebrow">WELCOME TO LESSON LAB</span><h1>나의 훈련을<br>시작할 준비<span class="heading-dot">.</span></h1><p class="muted">{% if athlete %}{{ athlete.name }} 선수님, {% endif %}개인 계정을 만들고 나만의 기록을 쌓아 보세요.</p><form method="post" class="stack-form">{% csrf_token %}{{ form.as_p }}<button type="submit" class="button primary full">계정 활성화 →</button></form><p class="small muted">초대 링크는 일회용입니다. 개인 계정과 비밀번호를 다른 사람에게 공유하지 마세요.</p></section>{% endblock %}
